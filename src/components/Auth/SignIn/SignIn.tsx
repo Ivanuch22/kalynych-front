@@ -57,11 +57,12 @@ const validationSchema = Yup.object().shape({
 
 interface ISingUp {
   handleFormChange: (type: IForm) => void;
+    isAuthenticated:boolean;
+    setIsAuthenticated:(status: boolean)=>void;
 }
 
-const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
+const SignInForm: React.FC<ISingUp> = ({ handleFormChange,isAuthenticated,setIsAuthenticated }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(true);
 
   const {
@@ -84,6 +85,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
       const res = await login(formattedData);
       if (res.access) {
         handleFormChange({ type: "signInForm" });
+
         setIsLoading(false);
         toast.success("Ласкаво просимо!");
         setIsAuthenticated(true);

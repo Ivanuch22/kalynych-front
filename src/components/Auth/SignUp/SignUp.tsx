@@ -16,6 +16,8 @@ import Button from "@mui/material/Button";
 import { IForm } from "../Auth.interfaces";
 
 import { useAuth } from "@/context/Auth";
+import {Navigate} from "react-router-dom";
+import routes from "@/routes";
 
 const styleTypography = {
   color: "var(--009-efd, #343A40)",
@@ -57,6 +59,9 @@ const validationSchema = Yup.object().shape({
 
 interface ISingUp {
   handleFormChange: (type: IForm) => void;
+    isAuthenticated:boolean,
+    setIsAuthenticated:(status: boolean)=>void;
+
 }
 
 interface ISingUpFormValues {
@@ -66,7 +71,7 @@ interface ISingUpFormValues {
   confirmPassword: string;
 }
 
-const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
+const SignUp: React.FC<ISingUp> = ({ handleFormChange,isAuthenticated,setIsAuthenticated }) => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -90,10 +95,11 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
       password: data.password,
     };
     try {
-      const res = await signUp(formattedData);
-      if (res.message === "Користувач успішно зареєстрований") {
+      const res:any = await signUp(formattedData);
+      if (res.status ===200) {
+          handleFormChange({ type: "signInForm" });
+          setIsAuthenticated(true);
         setIsLoading(false);
-        handleFormChange({ type: "signInForm" });
       }
     } catch (e) {
       toast.error("Щось пішло не так");
@@ -353,6 +359,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
         Увійти
         </Button>
       </Box>
+
     </>
   );
 };

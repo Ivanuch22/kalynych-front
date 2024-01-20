@@ -10,6 +10,7 @@ import { IForm } from "./Auth.interfaces";
 
 const Auth: React.FC = () => {
   const [formName, setFormName] = useState<IForm>({ type: "signInForm" });
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   const handleFormChange = (newForm: IForm) => {
     setFormName(newForm);
@@ -27,10 +28,10 @@ const Auth: React.FC = () => {
       }}
     >
       {formName.type === "signInForm" && (
-        <SignInForm handleFormChange={handleFormChange} />
+        <SignInForm setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} handleFormChange={handleFormChange} />
       )}
       {formName.type === "signUpForm" && (
-        <SignUp handleFormChange={handleFormChange} />
+        <SignUp setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} handleFormChange={handleFormChange} />
       )}
       {formName.type === "forgotPasswordForm" && (
         <ForgotPassword handleFormChange={handleFormChange} />
