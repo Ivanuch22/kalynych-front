@@ -45,9 +45,12 @@ interface ISingUp {
 interface FormValues {
   email: string;
 }
+interface IRes {
+    message?: string;
+}
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string().email("Неправильний email").required("Email обов'язковий"),
 });
 
 const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
@@ -70,16 +73,20 @@ const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
       email: data.email,
     };
     try {
-      const res = await forgotPassword(formattedData);
+
+
+
+
+        const res = await forgotPassword(formattedData);
       console.log(res);
-      // if (res.access) {
-      //     handleFormChange({ type: 'signInForm' });
-      //     setIsLoading(false);
-      //     toast.success('Welcome!');
-      //     setIsAuthenticated(true);
-      // }
+      if (res) {
+          handleFormChange({ type: 'signInForm' });
+          setIsLoading(false);
+          toast.success('Ласкаво просимо!');
+          setIsAuthenticated(true);
+      }
     } catch (e) {
-      toast.error("Something seems wrong");
+      toast.error("Щось тут не так.");
       setIsLoading(false);
     }
   };
@@ -111,7 +118,7 @@ const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
               textAlign: "center",
             }}
           >
-            Welcome back to KALYNYCH! Please <br /> Sign In to Continue.
+          Ласкаво просимо до  KALYNYCH! <br /> Введіть свій email для відновлення паролю
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -167,7 +174,7 @@ const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
                 {isLoading ? (
                   <CircularProgress size={24} sx={{ color: "#FFF" }} />
                 ) : (
-                  "Send me a letter"
+                  "Напишіть мені листа"
                 )}
               </Button>
             </Box>
@@ -190,7 +197,7 @@ const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
             fontWeight: "400",
           }}
         >
-          Have an account?
+        У вас є профіль?
         </Typography>
 
         <Button
@@ -204,7 +211,7 @@ const ForgotPassword: React.FC<ISingUp> = ({ handleFormChange }) => {
           }}
           onClick={() => handleFormChange({ type: "signInForm" })}
         >
-          Log in
+          Увійти
         </Button>
       </Box>
     </>

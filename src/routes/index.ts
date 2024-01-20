@@ -1,5 +1,5 @@
 const routes = {
-  baseURL: "http://localhost:5500/",
+  baseURL: "http://13.51.166.73",
 
   auth: "/auth",
   refresh: "/api/token/refresh/",

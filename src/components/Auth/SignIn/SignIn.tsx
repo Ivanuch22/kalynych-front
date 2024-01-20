@@ -49,10 +49,10 @@ const styleQuestionTypography = {
 };
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string().email("Неправильний email").required("Email обов'язковий"),
   password: Yup.string()
-    .required("Password is required")
-    .min(4, "Password must be at least 4 characters"),
+    .required("Пароль обов'язковий")
+    .min(4, "Пароль має містити мінімум 4 символа"),
 });
 
 interface ISingUp {
@@ -85,11 +85,11 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
       if (res.access) {
         handleFormChange({ type: "signInForm" });
         setIsLoading(false);
-        toast.success("Welcome!");
+        toast.success("Ласкаво просимо!");
         setIsAuthenticated(true);
       }
     } catch (e) {
-      toast.error("Something seems wrong");
+      toast.error("Щось тут не так!");
       setIsLoading(false);
     }
   };
@@ -126,7 +126,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
               textAlign: "center",
             }}
           >
-            Welcome back to KALYNYCH! Please <br /> Sign In to Continue.
+          Ласкаво просимо до Kalynych! <br /> Увійдіть, щоб продовжити.
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -186,7 +186,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
                       },
                     },
                   }}
-                  label="Password"
+                  label="Пароль"
                   type={!showPassword ? "text" : "password"}
                   variant="outlined"
                   {...register("password")}
@@ -218,6 +218,9 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
                 sx={{
                   marginTop: "16px",
                   backgroundColor: "#5A3AB6",
+                    padding : "13.5px 14px",
+                    fontSize: "15px",
+                    fontWeight: "700",
                   "&:hover": {
                     backgroundColor: "#5A3AB6",
                   },
@@ -228,7 +231,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
                 {isLoading ? (
                   <CircularProgress size={24} sx={{ color: "#FFF" }} />
                 ) : (
-                  "Log in"
+                  "Увійти"
                 )}
               </Button>
             </Box>
@@ -256,7 +259,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
             textTransform: "none",
           }}
         >
-          Forgot Password?
+          Забув пароль?
         </Button>
 
         <Box
@@ -273,7 +276,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
               fontWeight: "400",
             }}
           >
-            Don't have an account?
+          Не маєте акаунта?
           </Typography>
 
           <Button
@@ -287,7 +290,7 @@ const SignInForm: React.FC<ISingUp> = ({ handleFormChange }) => {
             }}
             onClick={() => handleFormChange({ type: "signUpForm" })}
           >
-            Register
+          Зареєструватися
           </Button>
         </Box>
       </Box>

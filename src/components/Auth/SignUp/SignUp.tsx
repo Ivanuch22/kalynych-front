@@ -45,15 +45,14 @@ const styleQuestionTypography = {
 };
 
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  full_name: Yup.string().required("Прізвище Ім'я обов'язкові"),
+  email: Yup.string().email("Invalid email").required("Email обов'язковий"),
   password: Yup.string()
-    .required("Password is required")
-    .min(4, "Password must be at least 4 characters"),
+    .required("Пароль обов'язковий")
+    .min(4, "Пароль має бути не менше 4 символів"),
   confirmPassword: Yup.string()
-    .required("Confirm password is required")
-    .oneOf([Yup.ref("password")], "Password must mutch"),
+    .required("Потрібно підтвердити пароль")
+    .oneOf([Yup.ref("password")], "Паролі не співпадають"),
 });
 
 interface ISingUp {
@@ -61,8 +60,7 @@ interface ISingUp {
 }
 
 interface ISingUpFormValues {
-  firstName: string;
-  lastName: string;
+  full_name: string,
   email: string;
   password: string;
   confirmPassword: string;
@@ -87,18 +85,18 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
     setIsLoading(true);
 
     const formattedData = {
-      name: `${data.firstName} ${data.lastName}`,
+      full_name: `${data.full_name}`,
       email: data.email,
       password: data.password,
     };
     try {
       const res = await signUp(formattedData);
-      if (res.message === "User registered successfully") {
+      if (res.message === "Користувач успішно зареєстрований") {
         setIsLoading(false);
         handleFormChange({ type: "signInForm" });
       }
     } catch (e) {
-      toast.error("Something seems wrong");
+      toast.error("Щось пішло не так");
       setIsLoading(false);
     }
   };
@@ -129,7 +127,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
               textAlign: "center",
             }}
           >
-            Create your account, and start to using KALYNYCH now!
+          Створіть свій обліковий запис і почніть користуватися KALYNYCH прямо зараз!
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -140,16 +138,10 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
                 flexDirection: "column",
               }}
             >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
+              <Box>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   <TextField
-                    label="First Name"
+                    label="Прізвище Ім'я"
                     sx={{
                       marginTop: "16px",
                       "& label.Mui-focused": {
@@ -168,45 +160,15 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
                       },
                     }}
                     variant="outlined"
-                    {...register("firstName")}
+                    {...register("full_name")}
                   />
-                  {errors.firstName && (
+                  {errors.full_name && (
                     <Typography sx={{ color: "red" }}>
-                      {errors.firstName.message}
+                      {errors.full_name.message}
                     </Typography>
                   )}
                 </Box>
 
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <TextField
-                    sx={{
-                      marginTop: "16px",
-                      marginLeft: "16px",
-                      "& label.Mui-focused": {
-                        color: "#495057",
-                      },
-                      "& .MuiInput-underline:after": {
-                        borderBottomColor: "#5A3AB6",
-                      },
-                      "& .MuiOutlinedInput-root": {
-                        "&:hover fieldset": {
-                          borderColor: "#5A3AB6",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#5A3AB6",
-                        },
-                      },
-                    }}
-                    variant="outlined"
-                    label="Last Name"
-                    {...register("lastName")}
-                  />
-                  {errors.lastName && (
-                    <Typography sx={{ marginLeft: "16px", color: "red" }}>
-                      {errors.lastName.message}
-                    </Typography>
-                  )}
-                </Box>
               </Box>
 
               <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -241,7 +203,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
 
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <TextField
-                  label="Password"
+                  label="Пароль"
                   type={!showPassword ? "text" : "password"}
                   sx={{
                     marginTop: "16px",
@@ -305,7 +267,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
                       },
                     },
                   }}
-                  label="Confirm Pasword"
+                  label="Підтвердіть пароль"
                   type={!showConfirmPassword ? "text" : "password"}
                   variant="outlined"
                   {...register("confirmPassword")}
@@ -338,6 +300,9 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
               <Button
                 sx={{
                   marginTop: "16px",
+                    padding : "13.5px 14px",
+                    fontSize: "15px",
+                    fontWeight: "700",
                   backgroundColor: "#5A3AB6",
                   "&:hover": {
                     backgroundColor: "#5A3AB6", // Set the same color as the default state
@@ -349,7 +314,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
                 {isLoading ? (
                   <CircularProgress size={24} sx={{ color: "#FFF" }} />
                 ) : (
-                  "Register"
+                  "Зареєструватися"
                 )}
               </Button>
             </Box>
@@ -372,7 +337,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
             fontWeight: "400",
           }}
         >
-          Have an account?
+            У вас є обліковий запис?
         </Typography>
         <Button
           sx={{
@@ -385,7 +350,7 @@ const SignUp: React.FC<ISingUp> = ({ handleFormChange }) => {
           }}
           onClick={() => handleFormChange({ type: "signInForm" })}
         >
-          Log in
+        Увійти
         </Button>
       </Box>
     </>

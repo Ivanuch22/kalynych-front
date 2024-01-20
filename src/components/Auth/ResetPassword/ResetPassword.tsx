@@ -64,7 +64,7 @@ const ResetPassword: React.FC = () => {
               textAlign: "center",
             }}
           >
-            Welcome back to KALYNYCH! Please <br /> Sign In to Continue.
+           Ласкаво просимо до  KALYNYCH! <br /> Введіть свій email, для відновлення паролю
           </Typography>
 
           <Box

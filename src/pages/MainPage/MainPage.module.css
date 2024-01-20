@@ -62,6 +62,22 @@
   border-radius: 4px;
 }
 
+.inDevelopment{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding: 20px;
+  padding-top: 200px;
+  background: url("505.png")  no-repeat ;
+  background-size: contain;
+  background-position: bottom center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 
 .img {
   stroke: white;

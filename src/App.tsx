@@ -39,54 +39,55 @@ import "./App.module.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route element={<PrivateRoutes />}>
-        <Route element={<Layout />} path={routes.index}>
-          <Route element={<MainPage />} path={routes.index} />
-          <Route element={<CVPage />} path={routes.cv} />
-          <Route element={<OneCVPage />} path={`${routes.cvById}:id`} />
-          <Route
-            element={<OneCoverLetterPage />}
-            path={`${routes.coverLetterByIdPage}:id`}
-          />
-          <Route element={<IdeasPage />} path={routes.ideasPage} />
-          <Route
-            element={<JobDescriptionPage />}
-            path={routes.jobsDescriptions}
-          />
+      <Route element={<MainPage />} path={routes.index} />
 
-          <Route
-            element={<OneJobDescriptionPage />}
-            path={`${routes.jobsDescriptions}/:id`}
-          />
+      {/*<Route element={<PrivateRoutes />}>*/}
+      {/*  <Route element={<Layout />} path={routes.index}>*/}
+      {/*    <Route element={<CVPage />} path={routes.cv} />*/}
+      {/*    <Route element={<OneCVPage />} path={`${routes.cvById}:id`} />*/}
+      {/*    <Route*/}
+      {/*      element={<OneCoverLetterPage />}*/}
+      {/*      path={`${routes.coverLetterByIdPage}:id`}*/}
+      {/*    />*/}
+      {/*    <Route element={<IdeasPage />} path={routes.ideasPage} />*/}
+      {/*    <Route*/}
+      {/*      element={<JobDescriptionPage />}*/}
+      {/*      path={routes.jobsDescriptions}*/}
+      {/*    />*/}
 
-          <Route element={<ConceirgePage />} path={routes.conceirgePage} />
-          <Route
-            element={<ConciergePageUserData />}
-            path={`${routes.conceirgePageUserData}:id`}
-          />
-          <Route element={<ConciergUserJobsPage />} path={routes.userJobs} />
-          <Route
-            element={<ConciergDashBoard />}
-            path={routes.conciergDashBoard}
-          />
+      {/*    <Route*/}
+      {/*      element={<OneJobDescriptionPage />}*/}
+      {/*      path={`${routes.jobsDescriptions}/:id`}*/}
+      {/*    />*/}
 
-          <Route element={<AdminPage />} path={routes.adminPage} />
-          <Route element={<UsersPage />} path={routes.usersPage} />
-          <Route element={<ProfilePage />} path={`${routes.userProfile}:id`} />
+      {/*    <Route element={<ConceirgePage />} path={routes.conceirgePage} />*/}
+      {/*    <Route*/}
+      {/*      element={<ConciergePageUserData />}*/}
+      {/*      path={`${routes.conceirgePageUserData}:id`}*/}
+      {/*    />*/}
+      {/*    <Route element={<ConciergUserJobsPage />} path={routes.userJobs} />*/}
+      {/*    <Route*/}
+      {/*      element={<ConciergDashBoard />}*/}
+      {/*      path={routes.conciergDashBoard}*/}
+      {/*    />*/}
 
-          <Route
-            element={<AdminPageConciergUser />}
-            path={`${routes.conceirgePageUsers}:id`}
-          />
+      {/*    <Route element={<AdminPage />} path={routes.adminPage} />*/}
+      {/*    <Route element={<UsersPage />} path={routes.usersPage} />*/}
+      {/*    <Route element={<ProfilePage />} path={`${routes.userProfile}:id`} />*/}
 
-          <Route element={<UserFindJobsPage />} path={routes.userFindJob} />
+      {/*    <Route*/}
+      {/*      element={<AdminPageConciergUser />}*/}
+      {/*      path={`${routes.conceirgePageUsers}:id`}*/}
+      {/*    />*/}
 
-          <Route
-            element={<UserProfile />}
-            path={`${routes.userProfileSettings}:id`}
-          />
-        </Route>
-      </Route>
+      {/*    <Route element={<UserFindJobsPage />} path={routes.userFindJob} />*/}
+
+      {/*    <Route*/}
+      {/*      element={<UserProfile />}*/}
+      {/*      path={`${routes.userProfileSettings}:id`}*/}
+      {/*    />*/}
+      {/*  </Route>*/}
+      {/*</Route>*/}
       <Route element={<Auth />} path={routes.auth} />
       <Route element={<ResetPassword />} path={routes.resetPassword} />
     </>
