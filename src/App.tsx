@@ -39,7 +39,10 @@ import "./App.module.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route element={<PrivateRoutes />}>
+
       <Route element={<MainPage />} path={routes.index} />
+      </Route>
 
       {/*<Route element={<PrivateRoutes />}>*/}
       {/*  <Route element={<Layout />} path={routes.index}>*/}
