@@ -1,0 +1,6 @@
+.formStyles {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}

@@ -1,0 +1,25 @@
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 32px;
+  padding: 14px;
+  width: 200px;
+}
+
+.activeLink {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #6741d9;
+  margin-top: 32px;
+  padding: 14px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.text {
+  color: #ffffff;
+  text-decoration: none;
+}

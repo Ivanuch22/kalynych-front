@@ -1,0 +1,14 @@
+.formStyles {
+  margin-top: 32px;
+}
+
+.icon {
+  display: flex;
+  height: 24px;
+  width: 24px;
+}
+
+.img {
+  stroke: white;
+  display: flex;
+}

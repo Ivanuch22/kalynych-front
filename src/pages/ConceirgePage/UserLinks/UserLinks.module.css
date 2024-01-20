@@ -1,0 +1,9 @@
+.links {
+  color: #5A3AB6;
+  font-size: 14px;
+  font-family: Roboto;
+  line-height: 18px;
+  width: 490px;
+  overflow: auto;
+  cursor: pointer;
+}

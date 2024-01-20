@@ -1,0 +1,42 @@
+.inputFile {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+  
+  .uploadButton {
+    display: flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 4px;
+    background: var(--text-color-60, #eff2f7);
+    font-size: 14px;
+    color: var(--text-color-80, #333);
+    cursor: pointer;
+    position: relative;
+    /* width: 69px; */
+    color: var(--text-color-20, #495057);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: capitalize;
+  }
+  
+  .icon{
+      display: flex;
+  }
+  
+  .fileName {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  

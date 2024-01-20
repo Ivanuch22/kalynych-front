@@ -1,0 +1,10 @@
+.link {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #555b6d;
+  user-select: none;
+  text-transform: capitalize;
+  margin-right: 12px;
+}

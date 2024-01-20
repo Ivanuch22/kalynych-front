@@ -1,0 +1,68 @@
+.smallWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .filterTitle {
+    color: var(--text-color-90, #495057);
+    font-family: Poppins;
+    font-size: 7px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    margin-right: 10px;
+  }
+  
+  .filterBtnWrapper {
+    display: flex;
+    align-items: center;
+    display: flex;
+    padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--text-color-20, #eff2f7);
+    background: var(--text-color-70, #fff);
+  
+    cursor: pointer;
+    margin-left: 12px;
+  }
+  
+  .optionWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 27px;
+    left: 66px;
+    border-radius: 4px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    line-height: 14px;
+    text-transform: capitalize;
+    z-index: 3;
+    background: var(--text-color-60, #eff2f7);
+  }
+  
+  .optionFilter {
+    margin-top: 4px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .optionFilter:hover {
+    background: var(--text-color-60, #e5ebf4);
+  }
+  
+  .statusImg {
+    display: flex;
+  }
+  
