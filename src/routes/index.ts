@@ -1,5 +1,5 @@
 const routes = {
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseUrl: "http://localhost:5500/",
 
   auth: "/auth",
   refresh: "/api/token/refresh/",
